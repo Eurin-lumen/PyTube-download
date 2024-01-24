@@ -1,11 +1,10 @@
 #!/usr/bin/env python
-#
 from __future__ import unicode_literals
 import youtube_dl
 import os
-import sys
 
-os.system("clear && clear && clear")
+# Utiliser print() pour Python 3
+print("clear && clear && clear")
 logo = '''
 8888888b.       88888888888       888               
 888   Y88b          888           888               
@@ -22,6 +21,7 @@ logo = '''
    \033[0m  \033[91m  \033[1m    }----{+}  fb.me/dzmanisso {+}----{
    \033[0m  \033[91m    \033[1m    }--{+} Greetz To IcoDz  {+}--{
 '''
+
 menu = '''\033[0m
     {1}--Video Download
     {2}--Audio Download
@@ -29,27 +29,29 @@ menu = '''\033[0m
 
     {99}-Exit
  '''
-print logo
-print menu
+
+# Utiliser print() pour Python 3
+print(logo)
+print(menu)
 
 
 def quit():
-    con = raw_input('Continue [Y/n] -> ')
+    con = input('Continue [Y/n] -> ')  # raw_input pour Python 2, input pour Python 3
     if con[0].upper() == 'N':
         exit()
     else:
         os.system("clear")
-        print logo
-        print menu
+        print(logo)
+        print(menu)
         select()
 
 
 def select():
     try:
-        choice = input("SnapTub~# ")
+        choice = int(input("SnapTub~# "))  # raw_input pour Python 2, input pour Python 3
         if choice == 1:
             os.system("clear")
-            print """
+            print("""
  __     __  __        __
 /  |   /  |/  |      /  |
 $$ |   $$ |$$/   ____$$ |  ______    ______
@@ -61,15 +63,15 @@ $$  \ /$$/ $$ |/$$$$$$$ |/$$$$$$  |/$$$$$$  |
     $/     $$/  $$$$$$$/  $$$$$$$/  $$$$$$/
 
 PUT URL EX: https://www.youtube.com/watch?v=PYJHFVBsmeQ
-"""
+""")
             ydl_opts = {}
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-                ydl.download([raw_input('URL: ')])
+                ydl.download([input('URL: ')])  # raw_input pour Python 2, input pour Python 3
             print("")
             quit()
         elif choice == 2:
             os.system("clear")
-            print """
+            print("""
   /$$$$$$                  /$$ /$$
  /$$__  $$                | $$|__/
 | $$  \ $$ /$$   /$$  /$$$$$$$ /$$  /$$$$$$
@@ -80,7 +82,7 @@ PUT URL EX: https://www.youtube.com/watch?v=PYJHFVBsmeQ
 |__/  |__/ \______/  \_______/|__/ \______/
 
 PUT URL EX: https://www.youtube.com/watch?v=PYJHFVBsmeQ
-"""
+""")
             ydl_opts = {
                 'format': 'bestaudio/best',
                 'postprocessors': [{
@@ -90,7 +92,7 @@ PUT URL EX: https://www.youtube.com/watch?v=PYJHFVBsmeQ
                 }],
             }
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-                ydl.download([raw_input('URL: ')])
+                ydl.download([input('URL: ')])  # raw_input pour Python 2, input pour Python 3
             quit()
         elif choice == 3:
             os.system("clear")
@@ -109,13 +111,13 @@ PUT URL EX: https://www.youtube.com/watch?v=PYJHFVBsmeQ
 
 EX: https://www.youtube.com/watch?v=lp-EO5I60KA&list=PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj
 """)
-            d3 = raw_input('playlist URL: ')
+            d3 = input('playlist URL: ')  # raw_input pour Python 2, input pour Python 3
             os.system("clear")
             os.system("youtube-dl -cit --extract-audio --audio-format mp3 " + d3)
             print("")
             quit()
-    except(KeyboardInterrupt):
-        print ""
+    except KeyboardInterrupt:
+        print("")
 
 
 select()
